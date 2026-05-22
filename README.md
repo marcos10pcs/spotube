@@ -1,3 +1,12 @@
+> [!WARNING]
+> **This is an unofficial fork of [Spotube](https://github.com/KRTirtho/spotube).**
+> It includes the following changes over the original:
+> - Fix for white screen on artist screen ([PR #3012](https://github.com/KRTirtho/spotube/pull/3012))
+> - NewPipe set as default YouTube engine on Android
+> - Last.fm integration rewritten without `scrobblenaut` dependency
+>
+> For the original project, visit [KRTirtho/spotube](https://github.com/KRTirtho/spotube).
+
 <div align="center">
   <img width="600" src="assets/branding/spotube_banner.png" alt="Spotube Logo">
 
