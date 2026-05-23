@@ -57,17 +57,6 @@ jobs:
             files: |
               dist/Spotube-windows-x86_64.nupkg
               dist/Spotube-windows-x86_64-setup.exe
-          - os: macos-14
-            platform: ios
-            arch: all
-            files: |
-              Spotube-iOS.ipa
-          - os: macos-14
-            platform: macos
-            arch: all
-            files: |
-              build/Spotube-macos-universal.dmg
-              build/Spotube-macos-universal.pkg
     runs-on: ${{matrix.os}}
     steps:
       - uses: actions/checkout@v4
