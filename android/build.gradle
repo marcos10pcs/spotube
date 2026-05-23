@@ -4,6 +4,12 @@ allprojects {
         mavenCentral()
         maven { url "https://jitpack.io" }
     }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'com.github.TeamNewPipe:NewPipeExtractor:v0.24.1'
+        }
+    }
 }
 
 rootProject.buildDir = '../build'
