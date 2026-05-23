@@ -111,7 +111,7 @@ class PreferencesTable extends Table {
       localLibraryLocation: [],
       themeMode: ThemeMode.system,
       audioSourceId: null,
-      youtubeClientEngine: kIsIOS
+      youtubeClientEngine: (kIsIOS || kIsMacOS)
           ? YoutubeClientEngine.youtubeExplode
           : YoutubeClientEngine.newPipe,
       discordPresence: true,
