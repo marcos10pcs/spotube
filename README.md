@@ -1,6 +1,14 @@
 <div align="center">
   <img width="600" src="assets/branding/spotube_banner.png" alt="Spotube Logo">
 
+This is an unofficial fork of Spotube. It includes the following changes over the original:
+- Fix for white screen on artist screen (PR #3012)
+- NewPipe set as default YouTube engine on Android and Windows
+
+For the original project, visit [KRTirtho/spotube](https://github.com/KRTirtho/spotube).
+
+---
+
 A cross-platform extensible open-source music streaming platform.<br>
 Bring your own music metadata/playlist/audio-source with plugins created by community or by yourself. A small step towards the decentralized music streaming era!
 
