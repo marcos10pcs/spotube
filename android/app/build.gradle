@@ -137,4 +137,5 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3"
     implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.24.1'
 }
