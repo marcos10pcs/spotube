@@ -3,7 +3,6 @@
 
 This is an unofficial fork of Spotube. It includes the following changes over the original:
 - Fix for white screen on artist screen (PR #3012)
-- NewPipe set as default YouTube engine on Android and Windows
 
 For the original project, visit [KRTirtho/spotube](https://github.com/KRTirtho/spotube).
 
