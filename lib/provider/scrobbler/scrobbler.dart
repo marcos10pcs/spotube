@@ -46,7 +46,7 @@ class ScrobblerNotifier extends AsyncNotifier<Scrobblenaut?> {
         _scrobbleController.stream.listen((track) async {
       try {
         await state.asData?.value?.track.scrobble(
-          artist: track.artists.first.name,
+          artist: track.artists.asString(),
           track: track.name,
           album: track.album.name,
           chosenByUser: true,

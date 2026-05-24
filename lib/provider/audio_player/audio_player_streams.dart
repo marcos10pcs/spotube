@@ -112,17 +112,21 @@ class AudioPlayerStreamListeners {
         /// The [Track] from Playlist.getTracks doesn't contain artist images
         /// so we need to fetch them from the API
         var activeTrack = audioPlayerState.activeTrack!;
-        if (activeTrack.artists.any((a) => a.images == null)) {
-          final metadataPlugin = await ref.read(metadataPluginProvider.future);
-          final artists = await Future.wait(
-            activeTrack.artists
-                .map((artist) => metadataPlugin!.artist.getArtist(artist.id)),
-          );
-          activeTrack = activeTrack.copyWith(
-            artists: artists
-                .map((e) => SpotubeSimpleArtistObject.fromJson(e.toJson()))
-                .toList(),
-          );
+        try {
+          if (activeTrack.artists.any((a) => a.images == null)) {
+            final metadataPlugin = await ref.read(metadataPluginProvider.future);
+            final artists = await Future.wait(
+              activeTrack.artists
+                  .map((artist) => metadataPlugin!.artist.getArtist(artist.id)),
+            );
+            activeTrack = activeTrack.copyWith(
+              artists: artists
+                  .map((e) => SpotubeSimpleArtistObject.fromJson(e.toJson()))
+                  .toList(),
+            );
+          }
+        } catch (e, stack) {
+          AppLogger.reportError(e, stack);
         }
 
         await history.addTrack(activeTrack);
