@@ -103,6 +103,7 @@ class AudioPlayerStreamListeners {
           return;
         }
 
+        print("[AudioPlayer] Marca de scrobble atingida para: ${audioPlayerState.activeTrack?.name}");
         scrobbler.scrobble(audioPlayerState.activeTrack!);
         ref
             .read(metadataPluginScrobbleProvider.notifier)
