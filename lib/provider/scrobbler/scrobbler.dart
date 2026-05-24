@@ -47,10 +47,10 @@ class ScrobblerNotifier extends AsyncNotifier<Scrobblenaut?> {
       try {
         final lastfm = state.asData?.value;
         if (lastfm == null) {
-          print("[Scrobbler] Erro: Usuário não está logado no Last.fm ou sessão expirou");
+          AppLogger.info("[Scrobbler] Erro: Usuário não está logado no Last.fm ou sessão expirou");
           return;
         }
-        print("[Scrobbler] Tentando enviar scrobble: ${track.name} - ${track.artists.asString()}");
+        AppLogger.info("[Scrobbler] Tentando enviar scrobble: ${track.name} - ${track.artists.asString()}");
         await lastfm.track.scrobble(
           artist: track.artists.asString(),
           track: track.name,
@@ -59,9 +59,9 @@ class ScrobblerNotifier extends AsyncNotifier<Scrobblenaut?> {
           duration: Duration(milliseconds: track.durationMs),
           timestamp: DateTime.now().toUtc(),
         );
-        print("[Scrobbler] Scrobble enviado com SUCESSO para o Last.fm!");
+        AppLogger.info("[Scrobbler] Scrobble enviado com SUCESSO para o Last.fm!");
       } catch (e, stackTrace) {
-        print("[Scrobbler] ERRO ao enviar para o Last.fm: $e");
+        AppLogger.info("[Scrobbler] ERRO ao enviar para o Last.fm: $e");
         AppLogger.reportError(e, stackTrace);
       }
     });
