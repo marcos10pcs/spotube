@@ -24,8 +24,8 @@ enum YoutubeClientEngine {
     return switch (this) {
       YoutubeClientEngine.youtubeExplode =>
         YouTubeExplodeEngine.isAvailableForPlatform,
-      YoutubeClientEngine.ytDlp => YtDlpEngine.isAvailableForPlatform,
-      YoutubeClientEngine.newPipe => NewPipeEngine.isAvailableForPlatform,
+      YoutubeClientEngine.ytDlp => kIsDesktop,
+      YoutubeClientEngine.newPipe => kIsAndroid || kIsDesktop,
     };
   }
 }
@@ -111,9 +111,8 @@ class PreferencesTable extends Table {
       localLibraryLocation: [],
       themeMode: ThemeMode.system,
       audioSourceId: null,
-      youtubeClientEngine: (kIsIOS || kIsMacOS)
-          ? YoutubeClientEngine.youtubeExplode
-          : YoutubeClientEngine.newPipe,
+      youtubeClientEngine:
+          kIsDesktop ? YoutubeClientEngine.ytDlp : YoutubeClientEngine.newPipe,
       discordPresence: true,
       endlessPlayback: true,
       enableConnect: false,

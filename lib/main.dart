@@ -39,6 +39,7 @@ import 'package:spotube/provider/tray_manager/tray_manager.dart';
 import 'package:spotube/l10n/l10n.dart';
 import 'package:spotube/provider/connect/clients.dart';
 import 'package:spotube/provider/user_preferences/user_preferences_provider.dart';
+import 'package:spotube/services/youtube_engine/yt_dlp_downloader.dart';
 import 'package:spotube/services/audio_player/audio_player.dart';
 import 'package:spotube/services/cli/cli.dart';
 import 'package:spotube/services/kv_store/encrypted_kv_store.dart';
@@ -96,12 +97,16 @@ Future<void> main(List<String> rawArgs) async {
 
     if (kIsDesktop) {
       await windowManager.setPreventClose(true);
-      await YtDlp.instance
-          .setBinaryLocation(
-            KVStoreService.getYoutubeEnginePath(YoutubeClientEngine.ytDlp) ??
-                "yt-dlp${kIsWindows ? '.exe' : ''}",
-          )
-          .catchError((e, stack) => null);
+      if (kIsWindows) {
+        await YtDlpDownloader.ensureInitialized();
+      } else {
+        await YtDlp.instance
+            .setBinaryLocation(
+              KVStoreService.getYoutubeEnginePath(YoutubeClientEngine.ytDlp) ??
+                  "yt-dlp${kIsWindows ? '.exe' : ''}",
+            )
+            .catchError((e, stack) => null);
+      }
       await FlutterDiscordRPC.initialize(Env.discordAppId);
     }
 
