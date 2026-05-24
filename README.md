@@ -7,7 +7,6 @@ This is an unofficial fork of Spotube. It includes the following changes over th
 - `yt-dlp` set as the default engine for Desktop (Windows/Linux/macOS)
 - `NewPipe` set as the default engine for Android/Mobile
 - Updated NewPipeExtractor to the latest version via resolution strategy
-- Fixed Last.fm login issues
 
 For the original project, visit [KRTirtho/spotube](https://github.com/KRTirtho/spotube).
 
